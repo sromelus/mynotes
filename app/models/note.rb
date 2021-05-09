@@ -1,5 +1,6 @@
 class Note < ApplicationRecord
-  validates :title, presence: true, length: { maximum: 30 }
+  validates :user_id, :title, presence: true
+  validates :title, length: { maximum: 30 }
   validates :body, length: { maximum: 1000 }
 
   belongs_to :user
