@@ -6,20 +6,13 @@ class User < ApplicationRecord
 
     has_many :notes, dependent: :destroy
 
-    # def self.authenticate(login, pass)
-    #     user = find_by_email(login)
-    #     return user if user && user.password_hash == user.encrypt_password(pass)
-    # end
-    
-    # def encrypt_password(pass)
-    #     BCrypt::Engine.hash_secret(pass, password_salt)
-    # end
+    scope :login, -> (email) { where("email= ?", email)}
 
 
     private
     def confirm_pass
         if self.password != self.confirm_password
-            errors.add(:confirm_password, 'and password must be the same')
+            errors.add(:confirm_password, 'does not match')
         end
     end
 end
