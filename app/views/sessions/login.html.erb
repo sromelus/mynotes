@@ -1,6 +1,6 @@
 <main class="form-auth text-center signin">
     <%= form_tag(:action => 'new_session') do %>
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <h1 class="h3 mb-3 fw-normal">Login</h1>
 
         <div class="form-floating mb-2">
             <%= email_field_tag 'email', nil, class: 'form-control', autofocus: true, autocomplete: "email",placeholder:"name@example.com", id: 'floatingInput' %>
@@ -16,8 +16,7 @@
       
         </div>
         <%= submit_tag "Sign in", class:"w-30 btn btn-lg btn-primary" %>
-        <%= link_to "Sign up", signup_path, class:"w-30 btn btn-lg btn-secondary" %>
-        <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
+        <%= link_to "Sign up", signup_path, class:"w-30 btn btn-lg btn-outline-secondary" %>
     <% end %>
 </main>
 

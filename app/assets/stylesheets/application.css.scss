@@ -20,4 +20,33 @@
 .body {
     background-color: #f3f3f3;
 }
+
+.logo {
+  font-family: sans-serif;
+  text-align: left;
+  margin-left: 1%;
+  font-weight: bolder;
+}
  
+.logo-ds {
+    margin-top: 10px;
+    border: 3px dotted #000; 
+    width: 105px; 
+    padding-left: 2px;
+}
+
+#notice-red {
+  position: absolute;
+  width: 150px;
+  background-color: #ff1e00;
+  color: #f3f3f3;
+  left: 650px;
+}
+
+#notice-green {
+  position: absolute;
+  width: 150px;
+  background-color: #00ff37;
+  color: #000;
+  left: 650px;
+}

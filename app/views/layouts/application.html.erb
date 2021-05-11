@@ -12,13 +12,31 @@
   </head>
 
   <body class="text-center body" data-new-gr-c-s-check-loaded="14.1010.0" data-gr-ext-installed="">
-    
-    <p id="notice"><%= notice %></p>
+    <% notice_class = !notice.nil? && notice.include?("unsucc") ? "notice-red" : "notice-green"%>
+
+    <p id=<%="#{notice_class}"%>><%= notice %></p>
 
     <% if !session[:current_user].blank? %>
-      <%= render 'notes/nav' %>
-      <%= yield %>
+      <%= render '/notes/nav' %>
+      <div style="margin-top: 70px">
+        <%= yield %>
+      </div>
     <% else %>
+    <div class="logo logo-ds">
+      <div class="logo">
+        NOTES APP
+      </div>
+      <div class="logo">
+        -----------------
+      </div>
+      <div class="logo">
+        -----------------
+      </div>
+      <div class="logo">
+        -----------------
+      </div>
+    </div>
+      
       <%= yield %>
     <% end %>
 

@@ -1,25 +1,30 @@
 # README [![Codeship Status for sromelus/mynotes](https://app.codeship.com/projects/ac888ccf-12d4-44ec-8325-b6f22b3ec134/status?branch=master)](https://app.codeship.com/projects/444186)
 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Taxtraker is a platform to help rideshare drivers track their taxes. The app tracks taxes by applying Irs's standard mileage deduction for each mile the user drive.
 
-Things you may want to cover:
+You can see a demo version running at http://taxtraker.herokuapp.com
 
-* Ruby version
+####  Ruby version 2.6.5
 
-* System dependencies
+System dependencies
 
-* Configuration
+Bootsrap - styling
+Bcrypt - password hashing
+User Auth - only Dependency is Bcrypt
 
-* Database creation
+## Startup - From the root folder
+After cloning the project repo.
+In order to run the app locally. Open the command line.
+`cd mynotes`
 
-* Database initialization
+#### Run
+>1. bundle install
+>2. bundle exec bundle
+>2. bundle exec rails s
 
-* How to run the test suite
+## How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+You can run rspec tests with
 
-* Deployment instructions
-
-* ...
+> 1. bundle exec rspec spec/models

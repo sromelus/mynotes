@@ -1,27 +1,35 @@
-<%= form_with(model: note) do |form| %>
-  <% if note.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
+<main class="note-form">
+  <%= form_with(model: note) do |form| %>
+    <div class="form-floatin mb-2">
+      <%= form.label 'Title:' %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
+    <div class='auth-error text-left text-danger'>
+      <% if note.errors[:title].any? %>
+          <%= "Title #{note.errors[:title].first}" %>
+      <% end %>
+     </div>
 
-      <ul>
-        <% note.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="form-floatin">
+      <%= form.label 'Body:' %>
+      <%= form.text_area :body, class: 'form-control', rows: "10" %>
+    </div>
+    <div class='auth-error text-left text-danger'>
+      <% if note.errors[:body].any? %>
+          <%= "Body #{note.errors[:body].first}" %>
+      <% end %>
+     </div>
+
+    <div class="actions mt-2">
+      <% if params[:action] == "edit"%>
+        <%= form.submit 'Update', class: "btn btn-outline-success btn-small"%>
+      <% else %>
+        <%= form.submit 'Create', class: "btn btn-outline-success btn-small"%>
+      <% end %>
+      <%= link_to 'Cancel', notes_path, class: "btn btn-outline-secondary btn-small" %>
     </div>
   <% end %>
+</main>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
