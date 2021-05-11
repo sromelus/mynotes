@@ -5,7 +5,7 @@ class NotesController < ApplicationController
 
   # GET /notes
   def index
-    @notes = current_user.notes
+    @notes = current_user.notes.order('created_at DESC')
     @user = current_user
   end
 

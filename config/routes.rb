@@ -9,10 +9,7 @@ Rails.application.routes.draw do
   post '/sessions/registration', to: 'sessions#registration', as: :registration
   delete '/sessions/signout', to: 'sessions#destroy_session', as: :signout
 
-  resources :notes
-
-  # get 'login', to: "users#login"
-  # get 'signup', to: "users#signup"
+  resources :notes, except: :show 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
