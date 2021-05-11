@@ -1,0 +1,25 @@
+<main class="form-auth text-center signin">
+    <%= form_tag(:action => 'new_session') do %>
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+        <div class="form-floating mb-2">
+            <%= email_field_tag 'email', nil, class: 'form-control', autofocus: true, autocomplete: "email",placeholder:"name@example.com", id: 'floatingInput' %>
+            <label for="floatingInput">Email address</label>
+        </div>
+        
+        <div class="form-floating">
+            <%= password_field_tag 'password', nil, autocomplete: "current-password",class:"form-control", placeholder:"Password", id: 'floatingPassword' %>
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <div class="mb-3">
+      
+        </div>
+        <%= submit_tag "Sign in", class:"w-30 btn btn-lg btn-primary" %>
+        <%= link_to "Sign up", signup_path, class:"w-30 btn btn-lg btn-secondary" %>
+        <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
+    <% end %>
+</main>
+
+
+

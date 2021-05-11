@@ -1,0 +1,65 @@
+<main class="form-auth">
+    <%= form_tag(:action => 'registration') do %>
+        <h1 class="h3 mb-3 fw-normal">Please Sign up</h1>
+      
+        <div class="form-floating mb-2">
+            <%= text_field_tag 'first_name', nil, class: 'form-control', autofocus: true, autocomplete: "first_name",placeholder:"name@example.com", id: 'floatingFirstName' %>
+            <label for="floatingFirstName">First Name</label>
+        </div>
+        <div class='auth-error text-left text-danger'>
+          <% if @user.errors[:first_name].first %>
+            <%= "First Name #{@user.errors[:first_name].first}" %>
+          <% end %>
+        </div>
+
+        <div class="form-floating mb-2">
+            <%= text_field_tag 'last_name', nil, class: 'form-control', autofocus: true, autocomplete: "last_name",placeholder:"name@example.com", id: 'floatingLastName' %>
+            <label for="floatingLastName">Last Name</label>
+        </div>
+        <div class='auth-error text-danger'>
+          <% if @user.errors[:last_name].first %>
+            <%= "Last Name #{@user.errors[:last_name].first}" %>
+          <% end %>
+        </div>
+
+        <div class="form-floating mb-2">
+            <%= email_field_tag 'email', nil, class: 'form-control', autofocus: true, autocomplete: "email",placeholder:"name@example.com", id: 'floatingEmail' %>
+            <label for="floatingEmail">Email address</label>
+        </div>
+        <div class='auth-error text-danger'>
+          <% if @user.errors[:email].first %>
+            <%= "Email #{@user.errors[:email].first}" %>
+          <% end %>
+        </div>
+
+        <div class="form-floating">
+            <%= password_field_tag 'password', nil, autocomplete: "current-password",class:"form-control", placeholder:"Password", id: 'floatingPassword' %>
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div class='auth-error text-danger'>
+          <% if @user.errors[:password].first %>
+            <%= "Password #{@user.errors[:password].first}" %>
+          <% end %>
+        </div>
+
+        <div class="form-floating">
+            <%= password_field_tag 'confirm_password', nil, autocomplete: "current-password",class:"form-control", placeholder:"Password", id: 'floatingConfirmPassword' %>
+            <label for="floatingConfirmPassword">Confirm Password</label>
+        </div>
+        <div class='auth-error text-danger'>
+          <% if @user.errors[:confirm_password].first %>
+            <%= "Confirm Password #{@user.errors[:confirm_password].first}" %>
+          <% end %>
+        </div>
+
+        <div class="checkbox mb-3">
+      
+        </div>
+        <%= submit_tag "Sign up", class:"w-30 btn btn-lg btn-primary" %>
+        <%= link_to "Sign in", login_path, class:"w-30 btn btn-lg btn-secondary" %>
+        <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
+    <% end %>
+</main>
+
+
+
