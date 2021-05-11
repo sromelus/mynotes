@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
                 session[:current_user] = @user
                 format.html { redirect_to notes_path, notice: "login successfully" }
             else
-                format.html { render 'login', notice: "login unsuccessful" }
+                format.html { render 'login'}
             end
         end
     end

@@ -1,31 +1,27 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Notes</h1>
-<%#= binding.pry %>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @notes.each do |note| %>
+<% if @notes.first %>
+  <table>
+    <thead>
       <tr>
-        <td><%= note.title %></td>
-        <td><%= note.body %></td>
-        <td><%= note.user_id %></td>
-        <td><%= link_to 'Show', user_note(note) %></td>
-        <td><%#= link_to 'Edit', edit_user_note_path(@user, note) %></td>
-        <td><%#= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Title</th>
+        <th>Body</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @notes.each do |note| %>
+        <tr>
+          <td><%= "#{note.title} (created by #{@user.full_name}, on #{note.day_time})" %></td>
+          <td><%= note.body %></td>
+          <td><%= link_to 'Show', note %></td>
+          <td><%= link_to 'Edit', edit_note_path(note) %></td>
+          <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <%= link_to "New Note", new_note_path, class: "h5" %>
+<% end %>
 
-<%#= link_to 'New Note', new_note_path %>

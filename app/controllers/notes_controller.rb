@@ -1,74 +1,81 @@
 class NotesController < ApplicationController
-  before_action :current_user
-  # before_action :set_note, only: %i[ show edit update destroy ]
+  before_action :login_required
+  # before_action :current_user
+  # before_action :note, only: %i[ show edit update destroy ]
 
-  # GET /notes or /notes.json
+  # GET /notes
   def index
-    @notes = Note.all
+    @notes = current_user.notes
+    @user = current_user
   end
 
-  # GET /notes/1 or /notes/1.json
-  def show
+  # GET /notes/1
+  def show    
+    note
   end
 
   # GET /notes/new
   def new
+    @note = Note.new
   end
 
   # GET /notes/1/edit
   def edit
+    note
   end
 
-  # POST /notes or /notes.json
+  # POST /notes 
   def create
-    @note = Note.new(note_params)
+    @note = Note.new(title: note_params[:title], body: note_params[:body])
+    @note.user_id = current_user.id
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: "Note was successfully created." }
-        format.json { render :show, status: :created, location: @note }
+        format.html { redirect_to notes_path, notice: "Note was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /notes/1 or /notes/1.json
+  # PATCH/PUT /notes/1
   def update
     respond_to do |format|
-      if @note.update(note_params)
-        format.html { redirect_to @note, notice: "Note was successfully updated." }
-        format.json { render :show, status: :ok, location: @note }
+      if note.update(note_params)
+        format.html { redirect_to notes_path, notice: "Note was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /notes/1 or /notes/1.json
+  # DELETE /notes/1
   def destroy
-    @note.destroy
+    note.destroy
     respond_to do |format|
       format.html { redirect_to notes_url, notice: "Note was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_note
-      @note = Note.find(params[:id])
-    end
-
-    def current_user
-      @user = User.find(params[:user_id])
-    end
   
-
-    # Only allow a list of trusted parameters through.
-    def note_params
-      params.require(:note).permit(:title, :body, :user_id)
+  def current_user
+    User.find(session[:current_user][0]["id"])
+  end
+  
+  def note
+    @note = Note.find(params[:id])
+    if current_user.id != @note.user_id
+      respond_to do |format|
+          format.html { redirect_to notes_path, notice: "Unauthorized Access" }
+      end
+    else
+      @note
     end
+  end
+  
+    # Only allow a list of trusted parameters through.
+  def note_params
+    params.require(:note).permit(:title, :body)
+  end
 end
