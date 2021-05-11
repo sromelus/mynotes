@@ -6,7 +6,7 @@ class Note < ApplicationRecord
   belongs_to :user
 
   def day_time
-    self.created_at.strftime("%a, %B %d at %I:%M %p")
+    created_at.strftime("%a, %B %d at %I:%M %p")
   end
 
 end

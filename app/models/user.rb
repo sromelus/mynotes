@@ -10,6 +10,10 @@ class User < ApplicationRecord
 
     scope :login, -> (email) { where("email= ?", email)}
 
+    def full_name
+        "#{first_name.capitalize} #{last_name.capitalize}"
+    end
+
     def password
         @password ||= Password.new(password_hash)
     end

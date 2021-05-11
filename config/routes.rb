@@ -9,9 +9,7 @@ Rails.application.routes.draw do
   post '/sessions/registration', to: 'sessions#registration', as: :registration
   delete '/sessions/signout', to: 'sessions#destroy_session', as: :signout
 
-  resources :notes do
-    resources :users
-  end
+  resources :notes
 
   # get 'login', to: "users#login"
   # get 'signup', to: "users#signup"
