@@ -13,19 +13,18 @@ class SessionsController < ApplicationController
     def new_session
         @user = User.login(login_params[:email])
         valid_user = false
-        
+
         #first check if user object is empty
         if @user.first
-            valid_user = validate_user?(@user.first[:password], login_params[:password])
+            valid_user = validate_user?(@user.first.password, login_params[:password])
         end
-        
 
         respond_to do |format|
             if valid_user
                 session[:current_user] = @user
                 format.html { redirect_to notes_path, notice: "login successfully" }
             else
-                format.html { redirect_to login_path, notice: "login unsuccessful" }
+                format.html { render 'login', notice: "login unsuccessful" }
             end
         end
     end
@@ -33,7 +32,10 @@ class SessionsController < ApplicationController
     
     
     def registration
-        @user = User.new(first_name: signup_params[:first_name], last_name: signup_params[:last_name], email: signup_params[:email], password: signup_params[:password], confirm_password: signup_params[:confirm_password])
+        @user = User.new(first_name: signup_params[:first_name], last_name: signup_params[:last_name], email: signup_params[:email])
+
+        @user.password = signup_params[:password]
+        @user.confirm_password = signup_params[:confirm_password]
         
         respond_to do |format|
             if @user.save
