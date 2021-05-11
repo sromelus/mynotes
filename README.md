@@ -1,9 +1,8 @@
 # README [![Codeship Status for sromelus/mynotes](https://app.codeship.com/projects/ac888ccf-12d4-44ec-8325-b6f22b3ec134/status?branch=master)](https://app.codeship.com/projects/444186)
 
 
-Taxtraker is a platform to help rideshare drivers track their taxes. The app tracks taxes by applying Irs's standard mileage deduction for each mile the user drive.
+------ NOTES APP -----
 
-You can see a demo version running at http://taxtraker.herokuapp.com
 
 ####  Ruby version 2.6.5
 
