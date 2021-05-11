@@ -1,4 +1,4 @@
-# README [![Codeship Status for sromelus/mynotes](https://app.codeship.com/projects/94716c50-bc5d-4620-9dc1-3b7ba1358a78/status?branch=master)](https://app.codeship.com/projects/443837)
+# README [![Codeship Status for sromelus/mynotes](https://app.codeship.com/projects/ac888ccf-12d4-44ec-8325-b6f22b3ec134/status?branch=master)](https://app.codeship.com/projects/444186)
 
 
 This README would normally document whatever steps are necessary to get the
